@@ -1,0 +1,142 @@
+<app-header></app-header>
+
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row py-3 px-3">
+    <div class="col-sm-12">
+<button type="submit" class="btn btn-light px-5" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Create Question</button>
+</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bgcls px-4">
+          
+                <form [formGroup]="QuestionForm">  
+                    
+                   
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Question Type:</label>
+                            <br>
+                            <select class="form-control form-control-sm" formControlName="questionType">
+                              <option>--Select--</option>
+                              <option>Multiple Choice Question</option>
+                              <option>Programming Question</option>
+                            </select>
+                         
+                          </div>
+                           <br>
+                           <div class="form-group">
+                              <label for="exampleFormControlInput2">Problem Statement</label>
+                              <br>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="problemStatement"></textarea>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                              
+                                  <div class="col-sm-7">
+                                      <label for="exampleFormControlInput3">Choices</label>
+                                  </div>
+                               
+                              </div>
+                             
+                              <label for="exampleFormControlInput3" style="font-weight:100">Enter the choices and mark the Checkbox button corresponding to the correct choice.</label>
+                              <br>
+                              <!-- <div class="row">
+                                  <div class="col-sm-11">
+                                      <div class="form-group">
+                                          <div class="form-check">
+                                          
+                                              <input class="form-check-input my-3" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" formControlName="choice">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:50px" formControlName="choicequest" ></textarea>
+                                          
+                                        </div>
+                                        </div>
+                                  </div>
+                                 
+                                  <i class="fa fa-trash py-3" aria-hidden="true"></i>
+                               
+                              </div> -->
+
+                            
+                              <!-- <div class="container mx-1">
+                                
+                                      
+                              <div class="row">
+                                <div class="col-sm-11 ">
+                                 
+                                        <input class="form-check-input my-3" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" formControlName="choice">
+                                          
+                                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" style="height:50px" formControlName="choicequest" ></textarea>
+                                 
+                                </div>  
+                                <i class="fa fa-trash py-3" aria-hidden="true"></i> 
+                              </div>  
+                              <br>
+                              </div> -->
+                              
+                             
+                             
+                              
+                           
+                                <div class="container mx-1">
+                                    <div formArrayName="ChoiceForm"  
+                                    *ngFor="let item of QuestionForm.get('ChoiceForm').controls; let i = index;">  
+                                    <div [formGroupName]="i">  
+                                          
+                                  <div class="row">
+                                    <div class="col-sm-11 ">
+                                      <!-- <div class="form-group">
+                                          <div class="form-check">
+                                           -->
+                                          
+                                            <input class="form-check-input my-3" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" formControlName="Choice">
+                                              
+                                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" style="height:50px" formControlName="choiceQuestion" ></textarea>
+                                           
+                                          
+                                            
+                                        <!-- </div>
+                                      
+                                       
+                                        </div> -->
+                                        
+                                      
+                                    </div>  
+                                    <i class="fa fa-trash py-3" aria-hidden="true" (click)="deleterow(i)"></i> 
+                                  </div>  
+                                  <br>
+                                  </div>
+                                  
+                                 
+                                  </div>
+                                 
+                                </div>
+                                <button type="submit" class="btn btn-light px-5"  (click)="addItem()"><i class="fa fa-plus"></i> Add Row</button>
+                               
+                              <!-- <i class="fa fa-plus py-3" aria-hidden="true" >&nbsp;&nbsp;&nbsp;Add Row</i> -->
+                                     
+                              
+                          
+                           
+                       
+                      
+                  </form>
+               
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger"  data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" (click)="SaveQuestion()" data-dismiss="modal" >Save </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -37,7 +37,7 @@
          <div class="form-row">
           <div class="form-group col-6">
             <div class="icheck-material-white">
-             <input type="checkbox" id="user-checkbox" checked="" />
+             <input type="checkbox" id="user-checkbox"/>
              <label for="user-checkbox">Remember me</label>
            </div>
           </div>
@@ -45,7 +45,7 @@
            <a href="reset-password.html">Reset Password</a>
           </div>
          </div>
-          <button type="button" class="btn btn-light btn-block" (click)="Login()">Sign In</button>
+          <button type="button" class="btn btn-light btn-block" (click)="Login()" [disabled]="loginForm.isinvalid">Sign In</button>
            <!-- <div class="text-center mt-3">Sign In With</div> -->
 <!--            
           <div class="form-row mt-4">

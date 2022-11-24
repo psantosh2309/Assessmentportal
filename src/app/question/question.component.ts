@@ -56,6 +56,8 @@ deleterow(id:any){
 
 }
 
+
+
 SaveQuestion(){
   console.log(this.QuestionForm.value);
   this.service.SaveQuestion(this.QuestionForm.value).subscribe(resultdat=>{

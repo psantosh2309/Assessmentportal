@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../shared.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assessment',
@@ -21,7 +22,7 @@ export class AssessmentComponent implements OnInit {
     { name: 'More than 6 Experience', value: 'More than 6 Experience' },
     
   ];
-  constructor(private service:SharedService,private FormBuilder:FormBuilder,private ToastService:NgToastService) { }
+  constructor(private service:SharedService,private FormBuilder:FormBuilder,private ToastService:NgToastService,private Router:Router) { }
 
   ngOnInit(): void {
     this.UpdateSkillTestForm = this.FormBuilder.group({
@@ -89,6 +90,9 @@ EditModal(res:any)
 
 }
 
+
+
+
 DeleteModal(result:any){
   this.service.deleteskillset(result.id).subscribe(res=>{
    
@@ -109,6 +113,12 @@ DeleteModal(result:any){
     }
 
 });
+}
+
+
+AddQuestion(){
+  //alert("hi");
+  this.Router.navigate(['/Question'])
 }
 }
 

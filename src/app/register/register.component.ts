@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { NgToastService } from 'ng-angular-popup';
@@ -11,6 +11,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class RegisterComponent implements OnInit {
   RegisterForm : FormGroup | any;
   data:any;
+  submitted = false;
   constructor(private router:Router,private Formbuilder:FormBuilder,private service:SharedService,private ToastService:NgToastService) { }
   //private ToastService:NgToastService
 
@@ -25,6 +26,8 @@ export class RegisterComponent implements OnInit {
       
     })
   }
+
+
 
   CreateUser(){
     console.log(this.RegisterForm.value);

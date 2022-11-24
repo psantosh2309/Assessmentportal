@@ -3,49 +3,52 @@
 	
   <div class="content-wrapper">
     <div class="container-fluid">
-      <div class="row py-5 px-3">
-    <div class="col-sm-12">
-        <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">S.No</th>
-                            <th scope="col">Skill Test</th>
-                            <th scope="col">Experience</th>
-                            <th scope="col">End Date</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="table-active"  *ngFor="let data of getskillset  let i = index;">
-                            <th scope="row">{{i+1}}</th>
-                            <td>{{data.skillTest}}</td>
-                            <td>{{data.experience}}</td>
-                            <td *ngIf="data.enddate!=null else elseBlock">{{data.enddate  | date:'dd-MM-yyyy'}}</td>
-                            <ng-template #elseBlock><td>{{"No End Date Specified"}}</td></ng-template>
-                            <td>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;font-weight:bold" (click)="EditModal(data)" data-toggle="modal" data-target="#exampleModal"></i>
-                                
-                            </td>
-                            <td>
-                                
-                                <i class="fa fa-trash" aria-hidden="true" style="font-size:20px;font-weight:bold" (click)="DeleteModal(data)"></i>
-                            </td>
-                            <td>
-                                <i class="fa fa-plus" aria-hidden="true" style="font-size:20px;font-weight:bold"></i>
-                               <!-- <button type="button" class="btn btn-light px-5" style="background-color:lightseagreen">  <i class="fa fa-plus" aria-hidden="true"></i> Add Question</button> -->
-                            </td>
-                          
-                          </tr>
-                        
-                        </tbody>
-                      </table>
-        </div>
-    </div>
-</div>
 
+        <div class="row py-5 px-3">
+            <div class="col-sm-12" *ngFor="let data of getskillset">
+              <div class="card"> 
+                  <div class="card-body">
+                   <div class="row" >
+                       <div class="col-sm-4">
+                        <span >Skill Test Name:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{data.skillTest}}
+                       </div>
+                       <div class="col-sm-4">
+                        <span >Experience:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{data.experience}}
+                      <br>
+          
+                   </div>
+                   <div class="col-sm-4">
+                    <span>End Date:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span *ngIf="data.enddate!=null else elseBlock">{{data.enddate  | date:'dd-MM-yyyy'}}</span>
+                    <ng-template #elseBlock><span>{{"No End Date Specified"}}</span></ng-template>
+  
+                </div>
+              
+                   </div>
+                   <br>
+                   <div class="row">
+                    <div class="col-1">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="EditModal(data)">Edit</button>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-danger" (click)="DeleteModal(data)">Delete</button>
+                    </div>
+                    <div class="col-4 mx-3">
+
+                        <button type="button" class="btn btn-info" (click)="AddQuestion()">Add Question</button>
+                    </div>
+                 
+                   
+                    
+                </div>
+                   
+                    
+                  </div>
+                </div>
+                <br>
+            </div>
+        </div>
+     
 <div class="row px-3 py-2">
     <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
